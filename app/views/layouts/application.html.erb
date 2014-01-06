@@ -33,22 +33,20 @@
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+	        <h4 class="modal-title" id="myModalLabel">New Story</h4>
 	      </div>
 	      <div class="modal-body">
-	        <%= form_for(Story.new) do |f| %>
+	        <%= form_for Story.new, :html => {:class => "form-inline"} do |f| %>
 					  
 
-					  <div class="field">
-					    <%= f.label :title %><br>
-					    <%= f.text_field :title %>
-					  </div>
-					  <div class="field">
-					    <p><span>As an</span> <%= f.text_field :audience, class: 'audience' %> I want <%= f.text_field :want %> so that I <%= f.text_field :because %></p>
+					  <div class="form-group">
+
+					    <p><span>Story Title  </span><%= f.text_field :title, class: 'form-control titlefield', placeholder: 'Title of story' %></p>
+
+					    <p><span>As a </span> <%= f.text_field :audience, class: 'form-control audience' %><span> I want</span> <%= f.text_field :want, class: 'form-control wantfield' %></br></br> <span>so that I</span> <%= f.text_field :because, class: ' form-control becausefield' %></p>
 					    
 					  </div>
 
-					  </div>
 					  <div class="field">
 					    <%= f.label :estimate %><br>
 					    <%= f.text_field :estimate %>
@@ -57,15 +55,13 @@
 					    <%= f.label :value %><br>
 					    <%= f.number_field :value %>
 					  </div>
-					  <div class="actions">
-					    <%= f.submit %>
-					  </div>
-					<% end %>
+
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary">Save changes</button>
+					    <%= f.submit 'Save', class: 'btn btn-primary' %>
 	      </div>
+	      	<% end %>
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->

@@ -12,3 +12,11 @@
  *= require_tree .
  += require bootstrap/bootstrap
  */
+
+/*modal form fields and text*/
+.wantfield { width: 400px !important;}
+.becausefield { width: 525px !important;}
+.titlefield { width: 200px !important;}
+.audience {width: 100px !important;}
+
+span { font-weight: bold;}

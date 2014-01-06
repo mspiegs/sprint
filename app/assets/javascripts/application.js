@@ -19,7 +19,7 @@
 $(document).ready(function(){
 
 	$('#myModal').modal({
-		show: false;
+		show: false
 	});
 
 	$('.audience').on('keyup', function(){
