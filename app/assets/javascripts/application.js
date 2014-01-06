@@ -17,7 +17,21 @@
 //= require_tree .
 
 $(document).ready(function(){
+
 	$('#myModal').modal({
 		show: false;
 	});
+
+	$('.audience').on('keyup', function(){
+		var letter = $(this).val();
+		var firstlet = letter[0];
+		console.log(firstlet);
+		if (firstlet == 'a' || firstlet == 'e' ){
+			$('span').text('As an');
+		} else {
+			$('span').text('As a');
+		}
+	});
+
 });
+
