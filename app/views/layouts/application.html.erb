@@ -43,18 +43,16 @@
 
 					    <p><span>Story Title  </span><%= f.text_field :title, class: 'form-control titlefield', placeholder: 'Title of story' %></p>
 
-					    <p><span>As a </span> <%= f.text_field :audience, class: 'form-control audience' %><span> I want</span> <%= f.text_field :want, class: 'form-control wantfield' %></br></br> <span>so that I</span> <%= f.text_field :because, class: ' form-control becausefield' %></p>
+					    <p><span id="vowelchange">As a </span> <%= f.text_field :audience, class: 'form-control audience' %><span> I want</span> <%= f.text_field :want, class: 'form-control wantfield' %></br></br> <span>so that I</span> <%= f.text_field :because, class: ' form-control becausefield' %></p>
 					    
 					  </div>
 
 					  <div class="field">
 					    <%= f.label :estimate %><br>
-					    <%= f.text_field :estimate %>
+					    <%= f.select :estimate, options_for_select([['Taster', 'taster'], ['Pint', 'pint'], ['Growler', 'growler'], ['Keg', 'keg']]), {class: 'estimate'} %>
 					  </div>
-					  <div class="field">
-					    <%= f.label :value %><br>
-					    <%= f.number_field :value %>
-					  </div>
+					  <%= f.hidden_field :value, class: 'value' %>
+					  
 
 	      </div>
 	      <div class="modal-footer">

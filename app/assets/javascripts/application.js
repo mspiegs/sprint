@@ -27,10 +27,25 @@ $(document).ready(function(){
 		var firstlet = letter[0];
 		console.log(firstlet);
 		if (firstlet == 'a' || firstlet == 'e' ){
-			$('span').text('As an');
+			$('#vowelchange').text('As an');
 		} else {
-			$('span').text('As a');
+			$('#vowelchange').text('As a');
 		}
+	});
+
+	$('#story_estimate').change(function(){
+		var estimate = $(this).val();
+		console.log(estimate);
+		if (estimate == 'taster') {
+			$('.value').val(2);
+		} else if (estimate == 'pint'){
+			$('.value').val(4);
+		} else if (estimate == 'growler'){
+			$('.value').val(8);
+		} else if (estimate == 'keg'){
+			$('.value').val(20);
+		}
+
 	});
 
 });
