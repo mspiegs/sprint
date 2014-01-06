@@ -15,3 +15,9 @@
 //= require turbolinks
 //= require bootstrap/bootstrap
 //= require_tree .
+
+$(document).ready(function(){
+	$('#myModal').modal({
+		show: false;
+	});
+});
