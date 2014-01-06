@@ -44,16 +44,10 @@
 					    <%= f.text_field :title %>
 					  </div>
 					  <div class="field">
-					    <%= f.label :audience %><br>
-					    <%= f.text_field :audience %>
+					    <p><span>As an</span> <%= f.text_field :audience, class: 'audience' %> I want <%= f.text_field :want %> so that I <%= f.text_field :because %></p>
+					    
 					  </div>
-					  <div class="field">
-					    <%= f.label :want %><br>
-					    <%= f.text_field :want %>
-					  </div>
-					  <div class="field">
-					    <%= f.label :because %><br>
-					    <%= f.text_field :because %>
+
 					  </div>
 					  <div class="field">
 					    <%= f.label :estimate %><br>
