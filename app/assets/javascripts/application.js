@@ -15,8 +15,8 @@
 //= require turbolinks
 //= require bootstrap/bootstrap
 //= require_tree .
-
-$(document).ready(function(){
+$(window).unload(function(){ $(window).unbind('unload'); });
+$(window).load(function(){
 
 	$('#myModal').modal({
 		show: false
@@ -46,6 +46,28 @@ $(document).ready(function(){
 			$('.value').val(20);
 		}
 
+	});
+
+	$('.hoveritem').on('mouseenter', function(){
+		$(this).addClass('highlight');
+		var id = $(this).data('story-id');
+
+		$.getJSON('/stories/' + id, function(response){
+			var letter = response.audience[0];
+			if (letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o') {
+				intro = 'As an ';
+			} else {
+				intro = 'As a ';
+			}
+			var item = $('<div></div>');
+			$('<p>'+intro+response.audience+' I want '+response.want+' so that I '+response.because+'</p>').appendTo(item);
+			$('.hoverview').html(item);
+		});
+		$(this).find('div').show();
+	});
+	$('.hoveritem').on('mouseleave', function(){
+		$(this).removeClass('highlight');
+		$(this).find('div').hide();
 	});
 
 });

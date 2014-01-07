@@ -20,3 +20,17 @@
 .audience {width: 100px !important;}
 
 span { font-weight: bold;}
+
+/*Items list - FULL VIEW*/
+
+.backlog-items {width: 300px; min-height: 700px; border: solid 1px #DCDCDC; -moz-border-radius: 7px;
+								border-radius: 7px; background-color: #FAF0E6;}
+.backlog-items ul{padding-left: 1px;}
+.backlog-items li {list-style: none; background-color: #87CEFA; border-bottom: solid 1px #DCDCDC;}
+
+.pointVal { margin-right: 10px;}
+
+.highlight {background-color: #DCDCDC !important;}
+
+/*Hover view in list*/
+.hoverview { display: none; width: 298px; height: 100px; border-top: solid 1px black;}
