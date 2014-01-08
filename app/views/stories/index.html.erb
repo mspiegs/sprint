@@ -16,13 +16,7 @@
       <% end %>
       <li class="hoveritem" data-story-id="<%= story.id %>"><span class="pointVal"><%= initial %></span><%= link_to story.title, story_path(story) %>
         <div class="hoverview">
-          <%= story.title %>
-          <% if story.audience[0] == 'a' || story.audience[0] == 'e' || story.audience[0] == 'i' || story.audience[0] == 'o' %>
-            <% intro = 'As an ' %>
-          <% else %>
-            <% intro = 'As a ' %>
-          <% end %>
-          <%= intro %><%= story.audience %>
+
         </div>
       </li>
     <% end %>

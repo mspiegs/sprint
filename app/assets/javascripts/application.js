@@ -48,7 +48,7 @@ $(window).load(function(){
 
 	});
 
-	$('.hoveritem').on('mouseenter', function(){
+	$('.hoveritem').on('click', function(){
 		$(this).addClass('highlight');
 		var id = $(this).data('story-id');
 
