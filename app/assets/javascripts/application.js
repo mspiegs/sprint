@@ -18,8 +18,8 @@
 $(window).unload(function(){ $(window).unbind('unload'); });
 $(document).ready(function(){
 
-	$('.backlog-items > ul').find('li:first').addClass('roundedtop');
-	$('.backlog-items > ul').find('li:last').addClass('roundedbottom');
+	$('.items > ul').find('li:first').addClass('roundedtop');
+	$('.items > ul').find('li:last').addClass('roundedbottom');
 	$('#myModal').modal({
 		show: false
 	});
@@ -62,14 +62,14 @@ $(document).ready(function(){
 				intro = 'As a ';
 			}
 			var item = $('<div></div>');
-			$('<p>'+intro+response.audience+' I want '+response.want+' so that I '+response.because+'</p>').appendTo(item);
+			$('<p style=\"font-family: Georgia;\"><a href=\"/stories/'+response.id+'\">'+intro+'<span>'+response.audience+'</span>'+' I want '+'<span>'+response.want+'</span>'+' so that I '+response.because+'</a></p>').appendTo(item);
 			$('.hoverview').html(item);
 		});
 		$(this).find('div').show();
 	});
 	$('.hoveritem').on('mouseleave', function(){
 		$(this).removeClass('highlight');
-		$(this).find('div').hide();
+		$(this).children('div:last').hide();
 	});
 
 });

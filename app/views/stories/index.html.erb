@@ -1,29 +1,20 @@
-<h1>Listing stories</h1>
+<h1>Story Board</h1>
+<div>
+  <div class="items list-items">
+    <%= render 'backlogList' %>
 
-<div class="backlog-items">
-  <ul>
-    <% @stories.each do |story| %>
-      <% if story.value == 8 %>
-        <% initial = 'G' %>
-      <% elsif story.value == 4 %>
-        <% initial = 'P' %>
-      <% elsif story.value == 2 %>
-        <% initial = 'T' %>
-      <% elsif story.value == 20 %>
-        <% initial = 'K' %>
-      <% else %>
-        <% initial = '?' %>
-      <% end %>
-      <li class="hoveritem" data-story-id="<%= story.id %>"><span class="pointVal"><%= initial %></span><%= link_to story.title, story_path(story) %><span style="float: right; padding-right: 5px"><%= story.status %></span>
-        <div class="hoverview">
 
-        </div>
-      </li>
-    <% end %>
-  </ul>
-
-</div>  <!-- backlog-items  -->
-
+  </div> <!-- backlog-items  -->
+  <div class="items list-items">
+    <%= render 'committedstories' %>
+  </div>
+  <div class="items list-items">
+    <%= render 'startedstories' %>
+  </div>
+  <div class="items list-items">
+    <%= render 'qastories' %>
+  </div>
+</div>
 <table>
   <thead>
     <tr>
