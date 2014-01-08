@@ -16,8 +16,10 @@
 //= require bootstrap/bootstrap
 //= require_tree .
 $(window).unload(function(){ $(window).unbind('unload'); });
-$(window).load(function(){
+$(document).ready(function(){
 
+	$('.backlog-items > ul').find('li:first').addClass('roundedtop');
+	$('.backlog-items > ul').find('li:last').addClass('roundedbottom');
 	$('#myModal').modal({
 		show: false
 	});
