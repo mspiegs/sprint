@@ -12,8 +12,9 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label :title %><%= f.label :story_status, class: 'statuslabel' %><br>
     <%= f.text_field :title %>
+    <%= f.select :status, options_for_select([['Backlog', 'backlog'], ['Committed', 'committed'],['Started', 'started'],['QA', 'qa'],['Complete','complete'],['Accepted','accepted']], selected: @story.status), {}, {class: 'status'} %> 
   </div>
   <div class="field">
     <p><span>As an</span> <%= f.text_field :audience, class: 'audience' %> I want <%= f.text_field :want, class: 'wantfield'%> so that I <%= f.text_field :because %></p>

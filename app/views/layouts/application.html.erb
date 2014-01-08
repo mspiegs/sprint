@@ -46,6 +46,10 @@
 					    <p><span id="vowelchange">As a </span> <%= f.text_field :audience, class: 'form-control audience' %><span> I want</span> <%= f.text_field :want, class: 'form-control wantfield' %></br></br> <span>so that I</span> <%= f.text_field :because, class: ' form-control becausefield' %></p>
 					    
 					  </div>
+					  <div>
+					  	<%= f.label :story_status %>
+					  <%= f.select :status, options_for_select([['Backlog', 'backlog'], ['Committed', 'committed'],['Started', 'started'],['QA', 'qa'],['Complete','complete'],['Accepted','accepted']]), {}, {class: 'status'} %> 
+					</div>
 
 					  <div class="field">
 					    <%= f.label :estimate %><br>

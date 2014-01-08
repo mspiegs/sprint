@@ -14,7 +14,7 @@
       <% else %>
         <% initial = '?' %>
       <% end %>
-      <li class="hoveritem" data-story-id="<%= story.id %>"><span class="pointVal"><%= initial %></span><%= link_to story.title, story_path(story) %>
+      <li class="hoveritem" data-story-id="<%= story.id %>"><span class="pointVal"><%= initial %></span><%= link_to story.title, story_path(story) %><span style="float: right; padding-right: 5px"><%= story.status %></span>
         <div class="hoverview">
 
         </div>
