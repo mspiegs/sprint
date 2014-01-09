@@ -54,6 +54,10 @@ span {
 	background-color: rgba(7,125,242, .0)
 }
 
+span a:hover {
+	text-decoration: none;
+}
+
 .itemstyle {
 	padding-top: 3px;
 }
