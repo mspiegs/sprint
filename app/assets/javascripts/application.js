@@ -63,7 +63,7 @@ $(document).ready(function(){
 			}
 			var item = $('<div></div>');
 			$('<p style=\"font-family: Georgia;\"><a href=\"/stories/'+response.id+'\">'+intro+'<span>'+response.audience+'</span>'+' I want '+'<span>'+response.want+'</span>'+' so that I '+response.because+'</a></p>').appendTo(item);
-			$('.hoverview').html(item);
+			$('.hoverviewitem').html(item);
 		});
 		$(this).find('div').show();
 	});
@@ -71,6 +71,19 @@ $(document).ready(function(){
 		$(this).removeClass('highlight');
 		$(this).children('div:last').hide();
 	});
+
+	// $('.hoverform').submit(function(){
+	// 	var valuesToSubmit = $(this).serialize();
+	// 		$.ajax({
+	// 			type: 'POST',
+	// 			url: $(this).attr('action'),
+	// 			data: valuesToSubmit,
+	// 			dataType: 'HTML'
+	// 			success: function(){
+	// 				window.reload();
+	// 			}
+	// 		return false;
+	// 	});
 
 });
 
