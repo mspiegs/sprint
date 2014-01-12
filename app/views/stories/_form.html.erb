@@ -11,26 +11,25 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><%= f.label :story_status, class: 'statuslabel' %><br>
-    <%= f.text_field :title %>
-    <%= f.select :status, options_for_select([['Backlog', 'backlog'], ['Committed', 'committed'],['Started', 'started'],['QA', 'qa'],['Complete','complete'],['Accepted','accepted']], selected: @story.status), {}, {class: 'status'} %> 
-  </div>
-  <div class="field">
-    <p><span>As an</span> <%= f.text_field :audience, class: 'audience' %> I want <%= f.text_field :want, class: 'wantfield'%> so that I <%= f.text_field :because %></p>
-    
-  </div>
+  <div class="form-group">
 
-  <div class="field">
-    <%= f.label :estimate %><br>
-    <%= f.text_field :estimate %>
-  </div>
-  <div class="field">
-    <%= f.label :value %><br>
-    <%= f.number_field :value %>
-  </div>
+              <p><span>Story Title  </span><%= f.text_field :title, class: 'form-control titlefield', placeholder: 'Title of story' %></p>
+
+              <p><span id="vowelchange">As a </span> <%= f.text_field :audience, class: 'form-control audience' %><span> I want</span> <%= f.text_field :want, class: 'form-control wantfield' %></br></br> <span>so that I</span> <%= f.text_field :because, class: ' form-control becausefield' %></p>
+              
+            </div>
+            <div>
+              <%= f.label :story_status %>
+            <%= f.select :status, options_for_select([['Backlog', 'backlog'], ['Committed', 'committed'],['Started', 'started'],['QA', 'qa'],['Complete','complete'],['Accepted','accepted']]), {}, {class: 'status'} %> 
+          </div>
+
+            <div class="field">
+              <%= f.label :estimate %><br>
+              <%= f.select :estimate, options_for_select([['Taster', 'taster'], ['Pint', 'pint'], ['Growler', 'growler'], ['Keg', 'keg']]), {class: 'estimate'} %>
+            </div>
+            <%= f.hidden_field :value, class: 'value' %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Save', class: "btn btn-primary" %>
   </div>
 <% end %>
 

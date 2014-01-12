@@ -36,34 +36,14 @@
 	        <h4 class="modal-title" id="myModalLabel">New Story</h4>
 	      </div>
 	      <div class="modal-body">
-	        <%= form_for Story.new, :html => {:class => "form-inline"} do |f| %>
+	        <%= render 'form' %>
 					  
 
-					  <div class="form-group">
-
-					    <p><span>Story Title  </span><%= f.text_field :title, class: 'form-control titlefield', placeholder: 'Title of story' %></p>
-
-					    <p><span id="vowelchange">As a </span> <%= f.text_field :audience, class: 'form-control audience' %><span> I want</span> <%= f.text_field :want, class: 'form-control wantfield' %></br></br> <span>so that I</span> <%= f.text_field :because, class: ' form-control becausefield' %></p>
-					    
-					  </div>
-					  <div>
-					  	<%= f.label :story_status %>
-					  <%= f.select :status, options_for_select([['Backlog', 'backlog'], ['Committed', 'committed'],['Started', 'started'],['QA', 'qa'],['Complete','complete'],['Accepted','accepted']]), {}, {class: 'status'} %> 
-					</div>
-
-					  <div class="field">
-					    <%= f.label :estimate %><br>
-					    <%= f.select :estimate, options_for_select([['Taster', 'taster'], ['Pint', 'pint'], ['Growler', 'growler'], ['Keg', 'keg']]), {class: 'estimate'} %>
-					  </div>
-					  <%= f.hidden_field :value, class: 'value' %>
-					  
-
-	      </div>
+	     </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					    <%= f.submit 'Save', class: 'btn btn-primary' %>
+					   
 	      </div>
-	      	<% end %>
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->

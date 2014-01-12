@@ -22,6 +22,7 @@ $(document).ready(function(){
 	$('.items > ul').find('li:last').addClass('roundedbottom');
 	$('#myModal').modal({
 		show: false
+		remote: /stories/new
 	});
 
 	$('.audience').on('keyup', function(){

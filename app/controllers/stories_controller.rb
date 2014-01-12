@@ -4,6 +4,7 @@ class StoriesController < ApplicationController
   # GET /stories
   # GET /stories.json
   def index
+    @story = Story.new
     @stories = Story.all
     @backlogs = @stories.backlog
     @commits = @stories.committed
