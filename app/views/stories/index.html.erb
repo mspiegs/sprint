@@ -1,18 +1,30 @@
 <h1>Story Board</h1>
 <div>
   <div class="items list-items">
-    <%= render 'backlogList' %>
+    <ul>
+      <li style="background-color: #DCDCDC;"><div class="listheader">Backlog Stories</div></li>
+      <%= render partial: 'backlog', collection: @backlogs %>
+    </ul>
 
 
   </div> <!-- backlog-items  -->
   <div class="items list-items">
-    <%= render 'committedstories' %>
+    <ul>
+      <li style="background-color: #DCDCDC;"><div class="listheader">Committed Stories</div></li>
+      <%= render partial: 'commit', collection: @commits %>
+    </ul>
   </div>
   <div class="items list-items">
-    <%= render 'startedstories' %>
+    <ul>
+      <li style="background-color: #DCDCDC;"><div class="listheader">Started Stories</div></li>
+      <%= render partial: 'start', collection: @starts %>
+    </ul>
   </div>
   <div class="items list-items">
-    <%= render 'qastories' %>
+    <ul>
+      <li style="background-color: #DCDCDC;"><div class="listheader">QA Stories</div></li>
+      <%= render partial: 'qa', collection: @qas %>
+    </ul>
   </div>
 </div>
 <table>
