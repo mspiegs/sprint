@@ -15,14 +15,13 @@
 //= require turbolinks
 //= require bootstrap/bootstrap
 //= require_tree .
-$(window).unload(function(){ $(window).unbind('unload'); });
+
 $(document).ready(function(){
 
 	$('.items > ul').find('li:first').addClass('roundedtop');
 	$('.items > ul').find('li:last').addClass('roundedbottom');
 	$('#myModal').modal({
 		show: false
-		remote: /stories/new
 	});
 
 	$('.audience').on('keyup', function(){
