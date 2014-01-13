@@ -9,7 +9,7 @@
       <% else %>
         <% initial = '?' %>
       <% end %>
-      <li class="hoveritem" data-story-id="<%= start.id %>"><div class="itemstyle"><span class="pointVal"><%= initial %></span><%= link_to start.title, story_path(start) %><span style="float: right; padding-right: 5px"><a data-method="get" href="/stories/<%=start.id%>/edit" class="glyphicon glyphicon-edit"></a></span></div>
+      <li class="hoveritem" data-story-id="<%= start.id %>"><div class="itemstyle"><span class="pointVal"><%= initial %></span><%= link_to start.title, story_path(start) %><span class="editbutton" style="float: right; padding-right: 5px"><a data-method="get" href="/stories/<%=start.id%>/edit" class="glyphicon glyphicon-edit"></a></span></div>
         <div class="hoverview">
           <div class="hoverviewitem">
             

@@ -18,6 +18,8 @@
 
 $(document).ready(function(){
 
+	$('.editbutton').hide();
+
 	$('.items > ul').find('li:first').addClass('roundedtop');
 	$('.items > ul').find('li:last').addClass('roundedbottom');
 	$('#myModal').modal({
@@ -67,9 +69,15 @@ $(document).ready(function(){
 		});
 		$(this).find('div').show();
 	});
+	$('.hoveritem').on('mouseenter', function(){
+		$(this).find('.editbutton').show();
+
+	});
+
 	$('.hoveritem').on('mouseleave', function(){
 		$(this).removeClass('highlight');
-		$(this).children('div:last').hide();
+		$(this).find('.hoverview').hide();
+		$(this).find('.editbutton').hide();
 	});
 
 	// $('.hoverform').submit(function(){

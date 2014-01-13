@@ -2,7 +2,7 @@
 <div>
   <div class="items list-items">
     <ul>
-      <li style="background-color: #DCDCDC;"><div class="listheader">Backlog Stories</div></li>
+      <li class="header"><div class="listheader">Backlog Stories</div></li>
       <%= render partial: 'backlog', collection: @backlogs %>
     </ul>
 
@@ -10,19 +10,19 @@
   </div> <!-- backlog-items  -->
   <div class="items list-items">
     <ul>
-      <li style="background-color: #DCDCDC;"><div class="listheader">Committed Stories</div></li>
+      <li class="header"><div class="listheader">Committed Stories</div></li>
       <%= render partial: 'commit', collection: @commits %>
     </ul>
   </div>
   <div class="items list-items">
     <ul>
-      <li style="background-color: #DCDCDC;"><div class="listheader">Started Stories</div></li>
+      <li class="header"><div class="listheader">Started Stories</div></li>
       <%= render partial: 'start', collection: @starts %>
     </ul>
   </div>
   <div class="items list-items">
     <ul>
-      <li style="background-color: #DCDCDC;"><div class="listheader">QA Stories</div></li>
+      <li class="header"><div class="listheader">QA Stories</div></li>
       <%= render partial: 'qa', collection: @qas %>
     </ul>
   </div>
