@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.turbolinks
 //= require turbolinks
 //= require bootstrap/bootstrap
 //= require_tree .
@@ -19,7 +20,7 @@
 $(document).ready(function(){
 
 	$('.editbutton').hide();
-
+	$('.cog-hover').hide();
 	$('.items > ul').find('li:first').addClass('roundedtop');
 	$('.items > ul').find('li:last').addClass('roundedbottom');
 	$('#myModal').modal({
@@ -78,6 +79,10 @@ $(document).ready(function(){
 		$(this).removeClass('highlight');
 		$(this).find('.hoverview').hide();
 		$(this).find('.editbutton').hide();
+	});
+
+	$('.cog, .cog-hover').click(function(){
+		$('.cog-hover').toggle();
 	});
 
 	// $('.hoverform').submit(function(){

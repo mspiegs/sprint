@@ -1,35 +1,52 @@
 <p id="notice"><%= notice %></p>
+<% if @story.audience[0] == 'a' || @story.audience[0] == 'e' || @story.audience[0] == 'i' || @story.audience[0] == 'o' %>
+  <% intro = 'As an ' %>
+<% else %>
+  <% intro = 'As a ' %>
+<% end %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @story.title %>
-</p>
+<div class="show-container">
+  <div class="show-title">
+    <div class="cog-hover">
+      <div class="cog-interior">
+        <%= link_to "Delete", story_path, method: :delete, data: { confirm: 'Are you sure you want to delete this story?'}, class: 'cog-item' %>
+      </div>
+    </div>
+    <p>
+      <strong><%= @story.title %></strong>
+      <span class="glyphicon glyphicon-cog cog" style="margin-right: 10px; float: right; font-size: 15px;">
+      </span>
+    </p>
 
-<p>
-  <strong>Audience:</strong>
-  <%= @story.audience %>
-</p>
+  </div>
 
-<p>
-  <strong>Want:</strong>
-  <%= @story.want %>
-</p>
+  <div class="show-content">
+    <p><%= intro %>
+      <strong><%= @story.audience %></strong> I want <strong><%= @story.want %></strong> so that I <strong><%= @story.because %></strong>
+    </p>
 
-<p>
-  <strong>Because:</strong>
-  <%= @story.because %>
-</p>
+    <p>
+      <strong>Estimate:</strong>
+      <%= @story.estimate %>
+    </p>
 
-<p>
-  <strong>Estimate:</strong>
-  <%= @story.estimate %>
-</p>
+    <p>
+      <strong>Value:</strong>
+      <%= @story.value %>
+    </p>
+  </div>
 
-<p>
-  <strong>Value:</strong>
-  <%= @story.value %>
-</p>
+  <div class="show-buttons">
+    <%= link_to 'Edit', edit_story_path(@story) %> |
+    <%= link_to 'Back', stories_path %> |
+    <%= link_to 'New Comment', new_story_comment_path(@story), class: 'button' %>
+  </div>
+</div>
+<% @story.comments.each do |comment| %>
+  <div class="story-comments">
+    <%= comment.details %>
+  </div>
+<% end %>
 
-<%= link_to 'Edit', edit_story_path(@story) %> |
-<%= link_to 'Back', stories_path %> |
-<%= link_to 'New Comment', new_story_comment_path(@story) %>
+
+

@@ -189,6 +189,143 @@ span a:hover {
 	border-left: 18px solid transparent;
 }
 
+/*Buttons*/
+
+.button {
+	width: 40px;
+	height: 25px;
+	border-radius: 5px;
+	background-color: #4fbeba;
+	color: rgba(236, 240, 241,1.0);
+	padding: 8px 8px 8px 8px;
+	transition: background-color 100ms linear;
+}
+
+.button:hover {
+	background-color: #1ba5a0;
+	text-decoration: none;
+	color: rgba(236, 240, 241,1.0);
+}
+
+.button:visited {
+	color: rgba(236, 240, 241,1.0);
+}
+
+/*Show Story View*/
+
+.show-container {
+	margin: auto;
+	width: 800px;
+}
+
+.show-title {
+	height: 40px;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	background: #3da8e3; /* Old browsers */
+}
+
+.show-title p {
+	text-align: center;
+	padding-top: 12px;
+	color: white;
+	font-size: 15px;
+}
+
+.show-content {
+	margin-top: 0px;
+	background: rgba(236, 240, 241,1.0);
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+.show-content p {
+	margin-left: 7px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 18px;
+}
+
+.show-buttons {
+	padding-top: 7px;
+}
+
+.cog{
+	height: 14px;
+	-webkit-transition-duration: 0.8s;
+  -moz-transition-duration: 0.8s;
+  -o-transition-duration: 0.8s;
+  transition-duration: 0.8s;
+   
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  -o-transition-property: -o-transform;
+  transition-property: transform;
+   
+  overflow:hidden;
+}
+
+.cog:hover {
+	-webkit-transform:rotate(90deg);
+  -moz-transform:rotate(90deg);
+  -o-transform:rotate(90deg);
+}
+
+.cog-hover {
+	display: inline;
+	width: 65px;
+	height: 100px;
+	margin-top: 42px;
+	background: rgba(236, 240, 241,1.0);
+	border: solid 2px #aeb1b1;
+	margin-left: 750px;
+	position: absolute;
+	padding-top: 4px; /* controls top spacing of links in cog */
+	z-index: 2;
+	border-radius: 5px;
+}
+
+.cog-hover:before {
+	content:"";
+	position: absolute;
+	right: 34%;
+	top: -12px;
+	width: 0;
+	height: 0;
+	border-bottom: 12px solid #aeb1b1;
+	border-right: 10px solid transparent;
+	border-left: 10px solid transparent;
+}
+
+.cog-hover:after {
+	content: "";
+	position: absolute;
+	right: 39%;
+	top: -9px;
+	width: 0;
+	height: 0;
+	border-bottom: 9px solid rgba(236, 240, 241,1.0);
+	border-right: 7px solid transparent;
+	border-left: 7px solid transparent;
+}
+
+.cog-item {
+	color: black;
+	padding-left: 10px;
+}
+
+.cog-item:hover, .cog-item:visited {
+	color: black;
+	text-decoration: none;
+	background-color: rgba(236, 240, 241,1.0);
+}
+
+/*.cog-interior {
+	width: 55px;
+	height: 90;
+	border-radius: 5px;
+	background: rgba(236, 240, 241,1.0);
+}*/
 
 
 
