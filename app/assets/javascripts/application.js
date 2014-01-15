@@ -19,6 +19,7 @@
 
 $(document).ready(function(){
 
+	$('.hoverview-background').hide();
 	$('.editbutton').hide();
 	$('.cog-hover').hide();
 	$('.items > ul').find('li:first').addClass('roundedtop');
@@ -65,19 +66,19 @@ $(document).ready(function(){
 				intro = 'As a ';
 			}
 			var item = $('<div></div>');
-			$('<p style=\"font-family: Georgia;\"><a href=\"/stories/'+response.id+'\">'+intro+'<span>'+response.audience+'</span>'+' I want '+'<span>'+response.want+'</span>'+' so that I '+response.because+'</a></p>').appendTo(item);
+			$('<p style=\"font-family: Georgia;\"><a href=\"/stories/'+response.id+'\">'+intro+'<span>'+audience+'</span>'+' I want '+'<span>'+response.want+'</span>'+' so that I '+response.because+'</a></p>').appendTo(item);
 			$('.hoverviewitem').html(item);
 		});
 		$(this).find('div').show();
 	});
+
 	$('.hoveritem').on('mouseenter', function(){
 		$(this).find('.editbutton').show();
-
 	});
 
-	$('.hoveritem').on('mouseleave', function(){
+	$('.hoveritem, .hoverview-background').on('mouseleave', function(){
 		$(this).removeClass('highlight');
-		$(this).find('.hoverview').hide();
+		$(this).find('.hoverview-background').hide();
 		$(this).find('.editbutton').hide();
 	});
 

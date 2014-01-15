@@ -10,16 +10,18 @@
         <% initial = '?' %>
       <% end %>
       <li class="hoveritem" data-story-id="<%= qa.id %>"><div class="itemstyle"><span class="pointVal"><%= initial %></span><%= link_to qa.title, story_path(qa) %><span  class="editbutton" style="float: right; padding-right: 5px"><a data-method="get" href="/stories/<%=qa.id%>/edit" class="glyphicon glyphicon-edit"></a></span></div>
-        <div class="hoverview">
-          <div class="hoverviewitem">
-            
+        <div class="hoverview-background">
+          <div class="hoverview">
+            <div class="hoverviewitem">
+              
+            </div>
+            <div class="statusbutton">
+                <%= form_for qa, remote: true, :html => {:class => "hoverform"} do |f| %>
+                  <%= f.label :story_status %>
+                  <%= f.select :status, options_for_select([['Backlog', 'backlog'], ['Committed', 'committed'],['Started', 'started'],['QA', 'qa'],['Complete','complete'],['Accepted','accepted']], selected: qa.status), {}, {class: 'status'} %>
+                  <%= f.submit "save" %>
+                <% end %>
+              </div>    
           </div>
-          <div class="statusbutton">
-              <%= form_for qa, remote: true, :html => {:class => "hoverform"} do |f| %>
-                <%= f.label :story_status %>
-                <%= f.select :status, options_for_select([['Backlog', 'backlog'], ['Committed', 'committed'],['Started', 'started'],['QA', 'qa'],['Complete','complete'],['Accepted','accepted']], selected: qa.status), {}, {class: 'status'} %>
-                <%= f.submit "save" %>
-              <% end %>
-            </div>    
         </div>
       </li>
