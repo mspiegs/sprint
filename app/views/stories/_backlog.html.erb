@@ -1,4 +1,6 @@
-
+  <ul>
+    <li class="header"><div class="listheader">Backlog Stories</div></li>  
+    <% @backlogs.each do |backlog| %>
       <% if backlog.value == 8 %>
         <% initial = 'G' %>
       <% elsif backlog.value == 4 %>
@@ -10,7 +12,7 @@
       <% else %>
         <% initial = '?' %>
       <% end %>
-      <li class="hoveritem" data-story-id="<%= backlog.id %>"><div class="itemstyle"><span class="pointVal"><%= initial %></span><%= link_to backlog.title, story_path(backlog) %><span class="editbutton" style="float: right; padding-right: 5px"><a data-method="get" href="/stories/<%=backlog.id%>/edit" class="glyphicon glyphicon-edit"></a></span></div>
+      <li class="hoveritem draggable" data-story-id="<%= backlog.id %>"><div class="itemstyle"><span class="pointVal"><%= initial %></span><%= link_to backlog.title, story_path(backlog) %><span class="editbutton" style="float: right; padding-right: 5px"><a data-method="get" href="/stories/<%=backlog.id%>/edit" class="glyphicon glyphicon-edit"></a></span></div>
         <div class="hoverview-background">
           <div class="hoverview">
             <div class="hoverviewitem">
@@ -26,10 +28,6 @@
           </div>
         </div>
       </li>
+    <% end %>
+  </ul>
 
-<%= javascript_tag do %>
-  var audience = '<%= backlog.audience%>';
-  var id1 = '<%= backlog.id%>';
-  var want = '<%= backlog.want%>';
-  var because = '<%= backlog.because%>';
-<% end %>

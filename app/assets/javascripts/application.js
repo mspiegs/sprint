@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.all
 //= require jquery.turbolinks
 //= require turbolinks
 //= require bootstrap/bootstrap
@@ -99,5 +100,13 @@ $(document).ready(function(){
 	// 		return false;
 	// 	});
 
+
+	// drag and drop
+
+	$(function(){
+		$('.draggable').draggable();
+		$('.droppable').droppable();
+	});
+	
 });
 

@@ -1,26 +1,21 @@
 <h1>Story Board</h1>
 <div>
-  <div class="items list-items">
-    <ul>
-      <li class="header"><div class="listheader">Backlog Stories</div></li>
-      <%= render partial: 'backlog', collection: @backlogs %>
-    </ul>
+  <div class="items list-items" id="backlog-items">
 
-
+      <%= render partial: 'backlog' %>
   </div> <!-- backlog-items  -->
-  <div class="items list-items">
-    <ul>
-      <li class="header"><div class="listheader">Committed Stories</div></li>
-      <%= render partial: 'commit', collection: @commits %>
-    </ul>
+
+  <div class="items list-items" id="commit-items">
+      <%= render partial: 'commit'%>
   </div>
-  <div class="items list-items">
+
+  <div class="items list-items" ondrop="drop(event)" ondragover="allowDrop(event)">
     <ul>
       <li class="header"><div class="listheader">Started Stories</div></li>
       <%= render partial: 'start', collection: @starts %>
     </ul>
   </div>
-  <div class="items list-items">
+  <div class="items list-items" ondrop="drop(event)" ondragover="allowDrop(event)">
     <ul>
       <li class="header"><div class="listheader">QA Stories</div></li>
       <%= render partial: 'qa', collection: @qas %>
