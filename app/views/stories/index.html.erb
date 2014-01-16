@@ -1,18 +1,18 @@
 <h1>Story Board</h1>
 <div>
-  <div class="items list-items" id="backlog-items">
+  <div class="items list-items droppable" id="backlog-items" data-drop-status="backlog">
 
       <%= render partial: 'backlog' %>
   </div> <!-- backlog-items  -->
 
-  <div class="items list-items droppable" id="commit-items">
+  <div class="items list-items droppable" id="commit-items" data-drop-status="committed">
       <%= render partial: 'commit'%>
   </div>
 
-  <div class="items list-items" id="started-items">
+  <div class="items list-items droppable" id="started-items" data-drop-status="started">
       <%= render partial: 'start'%>
   </div>
-  <div class="items list-items" id="qa-items">
+  <div class="items list-items droppable" id="qa-items" data-drop-status="qa">
       <%= render partial: 'qa'%>
   </div>
 </div>

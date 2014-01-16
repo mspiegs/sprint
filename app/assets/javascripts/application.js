@@ -104,8 +104,24 @@ $(document).ready(function(){
 
 		$('.draggable').draggable();
 		$('.droppable').droppable({
-			drop: function(){
-				alert('dropped');
+			drop: function(event, ui){
+				var dropstatus = $(this).data('drop-status');
+				var storyid = $(ui.draggable).data('story-id');
+				var url = '/stories/'+storyid+'.json';
+				var url1 = '/stories/'+storyid;
+				console.log($(ui.draggable).data('story-id'));
+				$.getJSON(url, function(data){
+					console.log(data.want);
+				});
+				$.ajax({
+					type: "PATCH",
+					dataType: "JSON",
+					url: url1,
+					data: { story: { status: dropstatus}},
+					success:function(data){
+						console.log("success");
+					}
+				});
 			}
 		});
 
