@@ -40,7 +40,7 @@ $(document).ready(function(){
 		}
 	});
 
-	$('#story_estimate').change(function(){
+	$('#story_estimate, estimate').change(function(){
 		var estimate = $(this).val();
 		console.log(estimate);
 		if (estimate == 'taster') {
@@ -55,9 +55,8 @@ $(document).ready(function(){
 
 	});
 
-	$('.hoveritem').on('click', function(){
-		$(this).addClass('highlight');
-		var id = $(this).data('story-id');
+	$('.clickspace').on('click', function(){
+		var id = $(this).closest('li').data('story-id');
 
 		$.getJSON('/stories/' + id, function(response){
 			var letter = response.audience[0];
@@ -70,14 +69,14 @@ $(document).ready(function(){
 			$('<p style=\"font-family: Georgia;\"><a href=\"/stories/'+response.id+'\">'+intro+'<span>'+response.audience+'</span>'+' I want '+'<span>'+response.want+'</span>'+' so that I '+response.because+'</a></p>').appendTo(item);
 			$('.hoverviewitem').html(item);
 		});
-		$(this).find('div').show();
+		$(this).closest('li').find('div').show();
 	});
 
 	$('.hoveritem').on('mouseenter', function(){
 		$(this).find('.editbutton').show();
 	});
 
-	$('.hoveritem, .hoverview-background').on('mouseleave', function(){
+	$('.hoveritem, .hoverview-background, .clickspace').on('mouseleave', function(){
 		$(this).removeClass('highlight');
 		$(this).find('.hoverview-background').hide();
 		$(this).find('.editbutton').hide();

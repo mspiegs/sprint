@@ -9,17 +9,11 @@
       <%= render partial: 'commit'%>
   </div>
 
-  <div class="items list-items" ondrop="drop(event)" ondragover="allowDrop(event)">
-    <ul>
-      <li class="header"><div class="listheader">Started Stories</div></li>
-      <%= render partial: 'start', collection: @starts %>
-    </ul>
+  <div class="items list-items" id="started-items">
+      <%= render partial: 'start'%>
   </div>
-  <div class="items list-items" ondrop="drop(event)" ondragover="allowDrop(event)">
-    <ul>
-      <li class="header"><div class="listheader">QA Stories</div></li>
-      <%= render partial: 'qa', collection: @qas %>
-    </ul>
+  <div class="items list-items" id="qa-items">
+      <%= render partial: 'qa'%>
   </div>
 </div>
 <table>

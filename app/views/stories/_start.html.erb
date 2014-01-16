@@ -1,15 +1,19 @@
-<% if start.value == 8 %>
+  <ul>
+    <li class="header"><div class="listheader">Started Stories</div></li>
+    <% @starts.each do |start| %>    
+
+      <% if start.value == 8 %>
         <% initial = 'G' %>
-      <% elsif start.value == 4 %>
-        <% initial = 'P' %>
-      <% elsif start.value == 2 %>
-        <% initial = 'T' %>
-      <% elsif start.value == 20 %>
-        <% initial = 'K' %>
-      <% else %>
-        <% initial = '?' %>
+        <% elsif start.value == 4 %>
+          <% initial = 'P' %>
+        <% elsif start.value == 2 %>
+          <% initial = 'T' %>
+        <% elsif start.value == 20 %>
+          <% initial = 'K' %>
+        <% else %>
+          <% initial = '?' %>
       <% end %>
-      <li class="hoveritem" data-story-id="<%= start.id %>"><div class="itemstyle"><span class="pointVal"><%= initial %></span><%= link_to start.title, story_path(start) %><span class="editbutton" style="float: right; padding-right: 5px"><a data-method="get" href="/stories/<%=start.id%>/edit" class="glyphicon glyphicon-edit"></a></span></div>
+      <li class="hoveritem" data-story-id="<%= start.id %>"><div class="itemstyle"><span class="pointVal"><%= initial %></span><%= link_to start.title, story_path(start) %><div class="clickspace" style="width: 153px; height: 27px; position: absolute; margin-top: -23px; margin-left: 118px;"></div><span class="editbutton" style="float: right; padding-right: 5px; margin-top: 0px;"><a data-method="get" href="/stories/<%=start.id%>/edit" class="glyphicon glyphicon-edit"></a></span></div>
         <div class="hoverview-background">
           <div class="hoverview">
             <div class="hoverviewitem">
@@ -25,3 +29,5 @@
           </div>
         </div>
       </li>
+    <% end %>
+  </ul>
