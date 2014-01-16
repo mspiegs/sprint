@@ -102,10 +102,13 @@ $(document).ready(function(){
 
 	// drag and drop
 
-	$(function(){
 		$('.draggable').draggable();
-		$('.droppable').droppable();
-	});
+		$('.droppable').droppable({
+			drop: function(){
+				alert('dropped');
+			}
+		});
+
 	
 });
 
