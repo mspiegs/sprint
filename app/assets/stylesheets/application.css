@@ -16,7 +16,7 @@
 
 /*modal form fields and text*/
 .container {
-	font-family: Georgia !important;
+	font-family: Helvetica !important;
 }
 
 .wantfield { width: 400px !important;}
@@ -32,7 +32,7 @@
 
 span { 
 	font-weight: bold;
-	font-family: Georgia;}
+	font-family: Helvetica;}
 
 /*Items list - FULL VIEW*/
 
@@ -45,7 +45,7 @@ span {
 	border-radius: 7px; */
 /*	background-color: rgba(163, 163, 160, .2);*/
 	float: left;
-	font-family: Georgia !important;
+	font-family: Helvetica !important;
 	}
 
 .items ul {padding-left: 1px;}

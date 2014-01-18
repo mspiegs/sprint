@@ -54,7 +54,12 @@ class StoriesController < ApplicationController
         @starts = @stories.started
         @qas = @stories.qa
         format.html { redirect_to stories_url}
-        format.js 
+        format.js { render layout: false }
+        format.json { render json: {:story => @story,
+                                    :backlog_div => render_to_string(partial: "backlog.html.erb"),
+                                    committed_div: render_to_string(partial: "commit.html.erb"),
+                                    qa_div: render_to_string(partial: "qa.html.erb"),
+                                    started_div: render_to_string(partial: "start.html.erb")}, layout: false }
       end
     end
   end

@@ -18,11 +18,14 @@
 //= require bootstrap/bootstrap
 //= require_tree .
 
-$(document).ready(function(){
 
-	$('.hoverview-background').hide();
-	$('.editbutton').hide();
-	$('.cog-hover').hide();
+
+$(document).ready(function(){
+	dragdrop();
+	clickspace();
+	hiders();
+
+	
 	$('.items > ul').find('li:first').addClass('roundedtop');
 	$('.items > ul').find('li:last').addClass('roundedbottom');
 	$('#myModal').modal({
@@ -55,22 +58,7 @@ $(document).ready(function(){
 
 	});
 
-	$('.clickspace').on('click', function(){
-		var id = $(this).closest('li').data('story-id');
-
-		$.getJSON('/stories/' + id, function(response){
-			var letter = response.audience[0];
-			if (letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o') {
-				intro = 'As an ';
-			} else {
-				intro = 'As a ';
-			}
-			var item = $('<div></div>');
-			$('<p style=\"font-family: Georgia;\"><a href=\"/stories/'+response.id+'\">'+intro+'<span>'+response.audience+'</span>'+' I want '+'<span>'+response.want+'</span>'+' so that I '+response.because+'</a></p>').appendTo(item);
-			$('.hoverviewitem').html(item);
-		});
-		$(this).closest('li').find('div').show();
-	});
+	
 
 	$('.hoveritem').on('mouseenter', function(){
 		$(this).find('.editbutton').show();
@@ -101,30 +89,75 @@ $(document).ready(function(){
 
 
 	// drag and drop
-
-		$('.draggable').draggable();
-		$('.droppable').droppable({
-			drop: function(event, ui){
-				var dropstatus = $(this).data('drop-status');
-				var storyid = $(ui.draggable).data('story-id');
-				var url = '/stories/'+storyid+'.json';
-				var url1 = '/stories/'+storyid;
-				console.log($(ui.draggable).data('story-id'));
-				$.getJSON(url, function(data){
-					console.log(data.want);
-				});
-				$.ajax({
-					type: "PATCH",
-					dataType: "JSON",
-					url: url1,
-					data: { story: { status: dropstatus}},
-					success:function(data){
-						console.log("success");
-					}
-				});
-			}
-		});
+	
+	
 
 	
 });
+
+// Hide on document ready
+var hiders = function(){
+	$('.hoverview-background').hide();
+	$('.editbutton').hide();
+	$('.cog-hover').hide();
+}
+// Function for clicking on item and firing popover with story info
+var clickspace = function(){ 
+	$('.clickspace').on('click', function(){
+		var id = $(this).closest('li').data('story-id');
+
+		$.getJSON('/stories/' + id, function(response){
+			var letter = response.audience[0];
+			if (letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o') {
+				intro = 'As an ';
+			} else {
+				intro = 'As a ';
+			}
+			var item = $('<div></div>');
+			$('<p style=\"font-family: Georgia;\"><a href=\"/stories/'+response.id+'\">'+intro+'<span>'+response.audience+'</span>'+' I want '+'<span>'+response.want+'</span>'+' so that I '+response.because+'</a></p>').appendTo(item);
+			$('.hoverviewitem').html(item);
+		});
+		$(this).closest('li').find('div').show();
+	});
+}
+
+// Function for drag and drop
+var sortit = function(){
+	$('.sortable').sortable();
+	$('.sortable').disableSelection();
+}
+var dragdrop = function(){
+
+	$('.draggable').draggable({ 
+		connectToSortable: ".sortable",
+		cursor: "move", 
+		opacity: 0.7
+		});
+	$('.droppable').droppable({
+		drop: function(event, ui){
+			var dropstatus = $(this).data('drop-status');
+			var storyid = $(ui.draggable).data('story-id');
+			var url = '/stories/'+storyid+'.json';
+			
+			$.ajax({
+				type: "PUT",
+				dataType: "JSON",
+				url: url,
+				data: { story: { status: dropstatus}},
+				success: function(data){
+						$("#backlog-items").html(data.backlog_div);
+						$("#commit-items").html(data.committed_div);
+						$("#started-items").html(data.started_div);
+						$("#qa-items").html(data.qa_div);
+						$(ui.draggable).hide();
+				},
+				error: function(){
+					alert(XMLHttpRequest.responseText);
+				}
+			});
+			event.stopPropagation();
+			event.preventDefault();
+		}
+	});
+	}
 
