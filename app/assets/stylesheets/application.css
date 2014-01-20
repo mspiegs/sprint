@@ -20,6 +20,10 @@
 ul.nav {
 	display: -webkit-box;
 }
+
+.myTab a, .myTab a:visited {
+	color: black;
+}
 .active{
 	background: #7abcff;
 }
@@ -277,7 +281,7 @@ span a:hover {
   -o-transition-property: -o-transform;
   transition-property: transform;
    
-  overflow:hidden;
+  overflow: hidden;
 }
 
 .cog:hover {
