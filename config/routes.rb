@@ -1,6 +1,10 @@
 Sprint::Application.routes.draw do
 
 
+  
+
+  resources :projects 
+    
   resources :stories do 
     resources :comments
   end

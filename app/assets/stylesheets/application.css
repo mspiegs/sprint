@@ -14,6 +14,15 @@
  *= require jquery.ui.all
  */
 
+
+/*Tabs*/
+
+ul.nav {
+	display: -webkit-box;
+}
+.active{
+	background: #7abcff;
+}
 /*modal form fields and text*/
 .container {
 	font-family: Helvetica !important;

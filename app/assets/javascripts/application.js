@@ -25,12 +25,15 @@ $(document).ready(function(){
 	clickspace();
 	hiders();
 
+	// Tabs background state
+	$('#'+projid).addClass('active');
 	
 	$('.items > ul').find('li:first').addClass('roundedtop');
 	$('.items > ul').find('li:last').addClass('roundedbottom');
 	$('#myModal').modal({
 		show: false
 	});
+
 
 	$('.audience').on('keyup', function(){
 		var letter = $(this).val();
@@ -145,6 +148,7 @@ var dragdrop = function(){
 				url: url,
 				data: { story: { status: dropstatus}},
 				success: function(data){
+						console.log(data.story.project_id )
 						$("#backlog-items").html(data.backlog_div);
 						$("#commit-items").html(data.committed_div);
 						$("#started-items").html(data.started_div);

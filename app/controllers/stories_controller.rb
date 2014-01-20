@@ -1,15 +1,17 @@
 class StoriesController < ApplicationController
+  layout 'story'
   before_action :set_story, only: [:show, :edit, :update, :destroy]
+  
 
   # GET /stories
   # GET /stories.json
   def index
     @story = Story.new
     @stories = Story.all
-    @backlogs = @stories.backlog
-    @commits = @stories.committed
-    @starts = @stories.started
-    @qas = @stories.qa
+    @backlogs = @stories.backlog.where(project_id: params[:id])
+    @commits = @stories.committed.where(project_id: params[:id])
+    @starts = @stories.started.where(project_id: params[:id])
+    @qas = @stories.qa.where(project_id: params[:id])
   end
 
   # GET /stories/1
@@ -31,10 +33,10 @@ class StoriesController < ApplicationController
   # POST /stories.json
   def create
     @story = Story.new(story_params)
-
+    projectid = @story.project_id
     respond_to do |format|
       if @story.save
-        format.html { redirect_to stories_url, notice: 'Story was successfully created.' }
+        format.html { redirect_to project_path(projectid), notice: 'Story was successfully created.' }
         format.json { render action: 'show', status: :created, location: @story }
       else
         format.html { render action: 'new' }
@@ -46,7 +48,9 @@ class StoriesController < ApplicationController
   # PATCH/PUT /stories/1
   # PATCH/PUT /stories/1.json
   def update
-    @stories = Story.all
+    projectid = @story.project_id
+    @stories = Story.where(project_id: projectid)
+    logger.debug @story.project_id
     respond_to do |format|
       if @story.update(story_params)
         @backlogs = @stories.backlog
@@ -80,8 +84,12 @@ class StoriesController < ApplicationController
       @story = Story.find(params[:id])
     end
 
+    def setting_project
+      @project = Project.find(params[:project_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def story_params
-      params.require(:story).permit(:title, :audience, :want, :because, :estimate, :value, :status)
+      params.require(:story).permit(:title, :audience, :want, :because, :estimate, :value, :status, :project_id)
     end
 end

@@ -28,6 +28,7 @@
               <%= f.select :estimate, options_for_select([['Taster', 'taster'], ['Pint', 'pint'], ['Growler', 'growler'], ['Keg', 'keg']]), {}, {class: 'estimate'} %>
             </div>
             <%= f.hidden_field :value, class: 'value' %>
+            <%= f.hidden_field :project_id, value: params[:id], class: 'projectid' %>
   <div class="actions">
     <%= f.submit 'Save', class: "btn btn-primary" %>
   </div>

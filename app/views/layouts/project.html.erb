@@ -48,9 +48,9 @@
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 	<div class= "container" style="width: 1250px; margin: auto;">
-		<ul class="nav nav-tabs">
+		<ul class="nav">
 			<% @projects.each do |project| %>
-		  <li id="myTab" ><%= link_to "#{project.name}", project_path(project) %></li>
+		  <li id="<%= project.id %>" class="myTab"><%= link_to "#{project.name}", project_path(project) %></li>
 		  <% end %>
 		</ul>
 
