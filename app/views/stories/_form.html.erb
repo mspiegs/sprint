@@ -24,7 +24,7 @@
           </div>
 
             <div class="field">
-              <%= f.label :estimate %><br>
+              <%= f.label :estimate %>
               <%= f.select :estimate, options_for_select([['Taster', 'taster'], ['Pint', 'pint'], ['Growler', 'growler'], ['Keg', 'keg']]), {}, {class: 'estimate'} %>
             </div>
             <%= f.hidden_field :value, class: 'value' %>
