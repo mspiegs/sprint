@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140118004101) do
+ActiveRecord::Schema.define(version: 20140124170221) do
 
   create_table "comments", force: true do |t|
     t.text     "details"
@@ -24,6 +24,19 @@ ActiveRecord::Schema.define(version: 20140118004101) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "sprint_length"
+    t.date     "start_date"
+    t.integer  "start_number"
+  end
+
+  create_table "sprintblocks", force: true do |t|
+    t.string   "name"
+    t.date     "start"
+    t.date     "end"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "number"
+    t.integer  "project_id"
   end
 
   create_table "stories", force: true do |t|
@@ -37,6 +50,7 @@ ActiveRecord::Schema.define(version: 20140118004101) do
     t.datetime "updated_at"
     t.string   "status"
     t.integer  "project_id"
+    t.integer  "sprintblock_id"
   end
 
 end

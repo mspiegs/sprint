@@ -24,6 +24,7 @@ class ProjectsController < ApplicationController
     @commits = Story.where(project_id: params[:id], status: 'committed')
     @starts = Story.where(project_id: params[:id], status: 'started')
     @qas = Story.where(project_id: params[:id], status: 'qa')
+    @sprintblocks = Sprintblock.all.current_sprint.where(project_id: params[:id]).first
     logger.debug "I am project show"
   end
 
@@ -85,6 +86,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name)
+      params.require(:project).permit(:name, :sprint_length, :start_date, :sprint_length)
     end
 end

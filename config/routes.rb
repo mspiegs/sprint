@@ -4,6 +4,8 @@ Sprint::Application.routes.draw do
   
 
   resources :projects 
+
+  resources :sprintblocks
     
   resources :stories do 
     resources :comments

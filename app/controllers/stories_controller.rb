@@ -6,6 +6,7 @@ class StoriesController < ApplicationController
   # GET /stories
   # GET /stories.json
   def index
+
     @story = Story.new
     @stories = Story.all
     @backlogs = @stories.backlog.where(project_id: params[:id])
@@ -91,6 +92,6 @@ class StoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def story_params
-      params.require(:story).permit(:title, :audience, :want, :because, :estimate, :value, :status, :project_id)
+      params.require(:story).permit(:title, :audience, :want, :because, :estimate, :value, :status, :project_id, :sprintblock_id)
     end
 end
