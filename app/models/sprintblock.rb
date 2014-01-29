@@ -18,6 +18,14 @@ class Sprintblock < ActiveRecord::Base
 		self.end = enddate
 	end
 
+	def self.auto_sprint
+		@projects = Project.all
+		@projects.each do |project|
+			sprint1 = Sprintblock.current_sprint.where(project_id: project.id).first
+			sprint1.next_sprint
+		end
+	end
+
 	def next_sprint
 		project = set_project
 		length = project.sprint_length
