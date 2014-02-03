@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140124170221) do
+ActiveRecord::Schema.define(version: 20140129045252) do
 
   create_table "comments", force: true do |t|
     t.text     "details"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20140124170221) do
     t.string   "status"
     t.integer  "project_id"
     t.integer  "sprintblock_id"
+    t.integer  "sprint_number"
   end
 
 end

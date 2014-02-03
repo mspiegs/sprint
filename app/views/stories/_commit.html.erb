@@ -19,6 +19,7 @@
             <div class="hoverviewitem">
               
             </div>
+            <%= commit.sprint_number %>
             <div class="statusbutton">
                 <%= form_for commit, remote: true, :html => {:class => "hoverform"} do |f| %>
                   <%= f.label :story_status %>

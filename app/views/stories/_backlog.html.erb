@@ -22,7 +22,7 @@
                 <%= form_for backlog, remote: true, :html => {:class => "hoverform"} do |f| %>
                   <%= f.label :story_status %>
                   <%= f.select :status, options_for_select([['Backlog', 'backlog'], ['Committed', 'committed'],['Started', 'started'],['QA', 'qa'],['Complete','complete'],['Accepted','accepted']], selected: backlog.status), {}, {class: 'status'} %>
-                  <%= f.hidden_field :project_id, value: params[:id] %>
+                  
                   <%= f.submit "save" %>
                 <% end %>
               </div>    
