@@ -20,6 +20,6 @@
 # Learn more: http://github.com/javan/whenever
 
 every 13.days do
-	# runner "Sprintblock.auto_sprint", environment: 'development'
+	runner "Sprintblock.auto_sprint", environment: 'development'
 	
 end

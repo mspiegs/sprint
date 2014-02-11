@@ -2,7 +2,7 @@
 
 
 
-<%= @sprintblocks.name %>
+<%= @sprintblocks.name %> <%= @sprintblocks.start %> - <%= @sprintblocks.end %>
 <%= render 'stories/index' %>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
