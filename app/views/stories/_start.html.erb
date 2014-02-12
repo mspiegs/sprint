@@ -13,7 +13,7 @@
         <% else %>
           <% initial = '?' %>
       <% end %>
-      <li class="hoveritem draggable" data-story-id="<%= start.id %>"><div class="itemstyle"><span class="pointVal"><%= initial %></span><%= link_to start.title, story_path(start) %><div class="clickspace" style="width: 153px; height: 27px; position: absolute; margin-top: -23px; margin-left: 118px;"></div><span class="editbutton" style="float: right; padding-right: 5px; margin-top: 0px;"><a data-method="get" href="/stories/<%=start.id%>/edit" class="glyphicon glyphicon-edit"></a></span></div>
+      <li class="hoveritem draggable" data-story-id="<%= start.id %>"><div class="itemstyle"><span class="pointVal"><%= initial %></span><%= link_to start.title, story_path(start) %></span><span class="story_numbers">No. <%= start.id %></span><div class="clickspace" style="width: 153px; height: 27px; position: absolute; margin-top: -23px; margin-left: 118px;"></div><span class="editbutton" style="float: right; padding-right: 5px; margin-top: 0px;"><a data-method="get" href="/stories/<%=start.id%>/edit" class="glyphicon glyphicon-edit"></a></span></div>
         <div class="hoverview-background">
           <div class="hoverview">
             <div class="hoverviewitem">
