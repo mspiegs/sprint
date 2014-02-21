@@ -31,37 +31,4 @@
     <% end %>
   </ul>
 
-  <script type="text/javascript">
-$(document).ready(function(){
-  hiders();
-  dragdrop();
  
-  $('.hoveritem').on('click', function(){
-    $(this).addClass('highlight');
-    var id = $(this).data('story-id');
-
-    $.getJSON('/stories/' + id, function(response){
-      var letter = response.audience[0];
-      if (letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o') {
-        intro = 'As an ';
-      } else {
-        intro = 'As a ';
-      }
-      var item = $('<div></div>');
-      $('<p style=\"font-family: Georgia;\"><a href=\"/stories/'+response.id+'\">'+intro+'<span>'+response.audience+'</span>'+' I want '+'<span>'+response.want+'</span>'+' so that I '+response.because+'</a></p>').appendTo(item);
-      $('.hoverviewitem').html(item);
-    });
-    $(this).find('div').show();
-  });
-
-  $('.hoveritem').on('mouseenter', function(){
-    $(this).find('.editbutton').show();
-  });
-
-  $('.hoveritem, .hoverview-background').on('mouseleave', function(){
-    $(this).removeClass('highlight');
-    $(this).find('.hoverview-background').hide();
-    $(this).find('.editbutton').hide();
-  });
-});
-// </script>

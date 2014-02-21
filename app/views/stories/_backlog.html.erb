@@ -13,13 +13,24 @@
         <% initial = '?' %>
       <% end %>
       <li class="hoveritem draggable" data-story-id="<%= backlog.id %>">
-        <div class="itemstyle"><span class="pointVal"><%= initial %></span><%= link_to backlog.title, story_path(backlog) %></span><span class="story_numbers">No. <%= backlog.id %></span>
-          <div class="clickspace" style="width: 153px; height: 27px; position: absolute; margin-top: -23px; margin-left: 118px;">
+        <div class="itemstyle">
+          <div class="pointVal">
+            <%= initial %>
           </div>
-          <span class="editbutton" style="float: right; padding-right: 5px; margin-top: 0px;">
+          <%= link_to backlog.title, story_path(backlog) %>
+          <span class="story_numbers">
+            No. <%= backlog.id %>
+          </span>
+          <div class="clickspace" style="width: 153px; height: 27px; position: absolute; margin-top: -23px; right: 30px;">
+          </div>
+          <span class="editbutton" style="float: right; margin-right: 4px; margin-top: 0px; z-index: 100;">
             <a data-method="get" href="/stories/<%=backlog.id%>/edit" class="glyphicon glyphicon-edit"></a>
           </span>
-        </div>
+          <div class="estimatebutton">
+            <%= form_for backlog, remote: true, :html => {:class => "hoverform"} do |f| %>
+              <%= f.select :value, options_for_select([['Taster', 2], ['Pint', 4],['Growler', 8],['Keg', 20]], selected: backlog.value), {}, {class: 'estimate'} %>
+            <% end %>
+          </div>
         <div class="hoverview-background">
           <div class="hoverview">
             <div class="hoverviewitem">
@@ -39,37 +50,3 @@
     <% end %>
   </ul>
 
-<script type="text/javascript">
-$(document).ready(function(){
-  hiders();
-  dragdrop();
- 
-  $('.hoveritem').on('click', function(){
-    $(this).addClass('highlight');
-    var id = $(this).data('story-id');
-
-    $.getJSON('/stories/' + id, function(response){
-      var letter = response.audience[0];
-      if (letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o') {
-        intro = 'As an ';
-      } else {
-        intro = 'As a ';
-      }
-      var item = $('<div></div>');
-      $('<p style=\"font-family: Georgia;\"><a href=\"/stories/'+response.id+'\">'+intro+'<span>'+response.audience+'</span>'+' I want '+'<span>'+response.want+'</span>'+' so that I '+response.because+'</a></p>').appendTo(item);
-      $('.hoverviewitem').html(item);
-    });
-    $(this).find('div').show();
-  });
-
-  $('.hoveritem').on('mouseenter', function(){
-    $(this).find('.editbutton').show();
-  });
-
-  $('.hoveritem, .hoverview-background').on('mouseleave', function(){
-    $(this).removeClass('highlight');
-    $(this).find('.hoverview-background').hide();
-    $(this).find('.editbutton').hide();
-  });
-});
-// </script>

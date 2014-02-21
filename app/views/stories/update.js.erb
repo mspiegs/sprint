@@ -16,24 +16,11 @@
   $('.hoverview-background').hide();
 	$('.editbutton').hide();
 	$('.cog-hover').hide();
-	$('.hoveritem').on('click', function(){
-		$(this).addClass('highlight');
-		var id = $(this).data('story-id');
-
-		$.getJSON('/stories/' + id, function(response){
-			var letter = response.audience[0];
-			if (letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o') {
-				intro = 'As an ';
-			} else {
-				intro = 'As a ';
-			}
-			var item = $('<div></div>');
-			$('<p style=\"font-family: Georgia;\"><a href=\"/stories/'+response.id+'\">'+intro+'<span>'+response.audience+'</span>'+' I want '+'<span>'+response.want+'</span>'+' so that I '+response.because+'</a></p>').appendTo(item);
-			$('.hoverviewitem').html(item);
-		});
-		$(this).find('div').show();
+	$('.estimatebutton').hide();
+	clickspace();
+	$('.estimate').on('change', function(){
+		$(this).submit();
 	});
-
 	$('.hoveritem').on('mouseenter', function(){
 		$(this).find('.editbutton').show();
 	});
@@ -44,4 +31,9 @@
 		$(this).find('.editbutton').hide();
 	});
 	dragdrop();
+	$('.pointVal').on('click', function(e){
+		$(this).siblings('.estimatebutton').show();
+		console.log("click on pointval");
+		console.log($(this).siblings());
+	});
 <% end -%>

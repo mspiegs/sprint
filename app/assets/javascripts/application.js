@@ -34,6 +34,15 @@ $(document).ready(function(){
 		show: false
 	});
 
+	$('.estimate').on('change', function(){
+		$(this).submit();
+	});
+
+	$('.pointVal').on('click', function(e){
+		$(this).siblings('.estimatebutton').show();
+		console.log("click on pointval");
+		console.log($(this).siblings());
+	});
 
 	$('.audience').on('keyup', function(){
 		var letter = $(this).val();
@@ -103,13 +112,16 @@ var hiders = function(){
 	$('.hoverview-background').hide();
 	$('.editbutton').hide();
 	$('.cog-hover').hide();
+	$('.estimatebutton').hide();
 }
 // Function for clicking on item and firing popover with story info
 var clickspace = function(){ 
 	$('.clickspace').on('click', function(){
+		console.log("clicked on clickspace");
 		var id = $(this).closest('li').data('story-id');
 
 		$.getJSON('/stories/' + id, function(response){
+			console.log('got story response');
 			var letter = response.audience[0];
 			if (letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o') {
 				intro = 'As an ';

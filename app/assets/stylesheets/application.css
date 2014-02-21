@@ -78,6 +78,12 @@ span a:hover {
 	padding-top: 3px;
 }
 
+.estimatebutton {
+	z-index: 50;
+	position: fixed;
+	margin-top: -46px;
+	margin-left: -50px;
+}
 .story_numbers {
 	padding-left: 5px; 
 	font-weight: normal; 
@@ -109,11 +115,15 @@ span a:hover {
 	}
 
 .pointVal { 
-	margin-right: 10px;
+	margin-right: 8px;
 	padding-left: 5px;
+	margin-left: 4px;
+	margin-top: -1px;
 	border: 1px solid rgb(5, 5, 5);
 	padding-right: 5px;
 	padding-top: 1px;
+	width: 25px;
+	float: left;
 }
 
 .hoveritem {
