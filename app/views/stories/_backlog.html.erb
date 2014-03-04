@@ -31,6 +31,7 @@
               <%= f.select :value, options_for_select([['Taster', 2], ['Pint', 4],['Growler', 8],['Keg', 20]], selected: backlog.value), {}, {class: 'estimate'} %>
             <% end %>
           </div>
+        </div>
         <div class="hoverview-background">
           <div class="hoverview">
             <div class="hoverviewitem">
@@ -43,10 +44,17 @@
                   
                   <%= f.submit "save" %>
                 <% end %>
-              </div>    
+            </div>    
           </div>
         </div>
       </li>
     <% end %>
   </ul>
+
+
+  <script>
+    $(document).ready(function(){
+      hiders();
+    });
+  </script>
 

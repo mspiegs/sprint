@@ -34,20 +34,17 @@ $(document).ready(function(){
 		show: false
 	});
 
-	$('.estimate').on('change', function(){
-		$(this).submit();
+	$('.items').delegate('.estimate', 'change', function(){
+		$(this).closest('li').find('.estimate').submit();
 	});
 
-	$('.pointVal').on('click', function(e){
-		$(this).siblings('.estimatebutton').show();
-		console.log("click on pointval");
-		console.log($(this).siblings());
+	$('.items').delegate('.pointVal', 'click', function(e){
+		$(this).closest('li').find('.estimatebutton').show();
 	});
 
 	$('.audience').on('keyup', function(){
 		var letter = $(this).val();
 		var firstlet = letter[0];
-		console.log(firstlet);
 		if (firstlet == 'a' || firstlet == 'e' ){
 			$('#vowelchange').text('As an');
 		} else {
@@ -57,7 +54,6 @@ $(document).ready(function(){
 
 	$('#story_estimate, estimate').change(function(){
 		var estimate = $(this).val();
-		console.log(estimate);
 		if (estimate == 'taster') {
 			$('.value').val(2);
 		} else if (estimate == 'pint'){
@@ -72,14 +68,25 @@ $(document).ready(function(){
 
 	
 
-	$('.hoveritem').on('mouseenter', function(){
+	$('.items').delegate('.hoveritem', 'mouseenter', function(){
 		$(this).find('.editbutton').show();
 	});
 
-	$('.hoveritem, .hoverview-background, .clickspace').on('mouseleave', function(){
+	$('.items').delegate('.hoveritem', 'mouseleave', function(){
+		$(this).closest('li').find('.estimatebutton').hide();
+	});
+
+	$('.items').delegate('.hoveritem', 'mouseleave', function(){
+		$(this).find('.editbutton').hide();
+	});
+
+	$('.items').delegate('.hoveritem', 'mouseleave', function(){
+		$(this).find('.hoverview-background').hide();
+	});
+
+	$('.hoveritem, .clickspace').on('mouseleave', function(){
 		$(this).removeClass('highlight');
 		$(this).find('.hoverview-background').hide();
-		$(this).find('.editbutton').hide();
 	});
 
 	$('.cog, .cog-hover').click(function(){
@@ -116,12 +123,10 @@ var hiders = function(){
 }
 // Function for clicking on item and firing popover with story info
 var clickspace = function(){ 
-	$('.clickspace').on('click', function(){
-		console.log("clicked on clickspace");
+	$('.items').delegate('.clickspace', 'click', function(){
 		var id = $(this).closest('li').data('story-id');
 
 		$.getJSON('/stories/' + id, function(response){
-			console.log('got story response');
 			var letter = response.audience[0];
 			if (letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o') {
 				intro = 'As an ';
@@ -129,10 +134,11 @@ var clickspace = function(){
 				intro = 'As a ';
 			}
 			var item = $('<div></div>');
-			$('<p style=\"font-family: Georgia;\"><a href=\"/stories/'+response.id+'\">'+intro+'<span>'+response.audience+'</span>'+' I want '+'<span>'+response.want+'</span>'+' so that I '+response.because+'</a></p>').appendTo(item);
+			$('<p style=\"font-family: Helvetica;\"><a href=\"/stories/'+response.id+'\">'+intro+'<span>'+response.audience+'</span>'+' I want '+'<span>'+response.want+'</span>'+' so that I '+response.because+'</a></p>').appendTo(item);
 			$('.hoverviewitem').html(item);
 		});
 		$(this).closest('li').find('div').show();
+		$('.estimatebutton').hide();
 	});
 }
 
@@ -143,11 +149,13 @@ var sortit = function(){
 }
 var dragdrop = function(){
 
-	$('.draggable').draggable({ 
-		connectToSortable: ".sortable",
-		cursor: "move", 
-		opacity: 0.7
-		});
+	$(".items").delegate('.draggable', 'mouseenter', function(){
+		$(this).draggable({ 
+			connectToSortable: ".sortable",
+			cursor: "move", 
+			opacity: 0.7
+			});
+	});
 	$('.droppable').droppable({
 		drop: function(event, ui){
 			var dropstatus = $(this).data('drop-status');
@@ -160,7 +168,6 @@ var dragdrop = function(){
 				url: url,
 				data: { story: { status: dropstatus}},
 				success: function(data){
-						console.log(data.story.project_id )
 						$("#backlog-items").html(data.backlog_div);
 						$("#commit-items").html(data.committed_div);
 						$("#started-items").html(data.started_div);

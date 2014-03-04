@@ -13,27 +13,5 @@
   $("#commit-items").html("<%= j render partial: "commit" %>");
   $("#qa-items").html("<%= j render partial: "qa" %>");
   $("#started-items").html("<%= j render partial: "start" %>");
-  $('.hoverview-background').hide();
-	$('.editbutton').hide();
-	$('.cog-hover').hide();
-	$('.estimatebutton').hide();
-	clickspace();
-	$('.estimate').on('change', function(){
-		$(this).submit();
-	});
-	$('.hoveritem').on('mouseenter', function(){
-		$(this).find('.editbutton').show();
-	});
-
-	$('.hoveritem, .hoverview-background').on('mouseleave', function(){
-		$(this).removeClass('highlight');
-		$(this).find('.hoverview-background').hide();
-		$(this).find('.editbutton').hide();
-	});
-	dragdrop();
-	$('.pointVal').on('click', function(e){
-		$(this).siblings('.estimatebutton').show();
-		console.log("click on pointval");
-		console.log($(this).siblings());
-	});
+  
 <% end -%>
