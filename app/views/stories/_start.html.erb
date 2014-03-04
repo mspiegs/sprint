@@ -13,7 +13,26 @@
         <% else %>
           <% initial = '?' %>
       <% end %>
-      <li class="hoveritem draggable" data-story-id="<%= start.id %>"><div class="itemstyle"><span class="pointVal"><%= initial %></span><%= link_to start.title, story_path(start) %></span><span class="story_numbers">No. <%= start.id %></span><div class="clickspace" style="width: 153px; height: 27px; position: absolute; margin-top: -23px; margin-left: 118px;"></div><span class="editbutton" style="float: right; padding-right: 5px; margin-top: 0px;"><a data-method="get" href="/stories/<%=start.id%>/edit" class="glyphicon glyphicon-edit"></a></span></div>
+      <li class="hoveritem committed-stories draggable" data-story-id="<%= start.id %>">
+        <div class="itemstyle">
+          <div class="pointVal">
+            <%= initial %>
+          </div>
+          <%= link_to start.title, story_path(start) %>
+          <span class="story_numbers">No. <%= start.id %>
+          </span>
+          <div class="clickspace" style="width: 153px; height: 27px; position: absolute; margin-top: -23px; margin-left: 118px;">
+          </div>
+          <span class="editbutton" style="float: right; padding-right: 5px; margin-top: 0px;">
+            <a data-method="get" href="/stories/<%=start.id%>/edit" class="glyphicon glyphicon-edit">
+            </a>
+          </span>
+          <div class="estimatebutton">
+            <%= form_for start, remote: true, :html => {:class => "hoverform"} do |f| %>
+              <%= f.select :value, options_for_select([['Taster', 2], ['Pint', 4],['Growler', 8],['Keg', 20]], selected: start.value), {}, {class: 'estimate'} %>
+            <% end %>
+          </div>
+        </div>
         <div class="hoverview-background">
           <div class="hoverview">
             <div class="hoverviewitem">
@@ -31,5 +50,11 @@
       </li>
     <% end %>
   </ul>
+
+  <script>
+    $(document).ready(function(){
+      hiders();
+    });
+  </script>
 
  
