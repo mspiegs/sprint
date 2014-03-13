@@ -11,10 +11,18 @@ class Sprintblock < ActiveRecord::Base
 	def set_sprint_end
 		project = set_project
 		logger.debug project
-		sprintlength = project.sprint_length
+		period = project.duration_length
+		number = project.duration_number.to_i
+		if period == "weeks"
+			sprintlength = number.weeks
+		elsif period == "days"
+			sprintlength = number.days
+		else
+			sprintlength = number.months
+		end
 		logger.debug sprintlength
 		start = self.start
-		enddate = start + sprintlength.weeks - 1.day
+		enddate = start + sprintlength - 1.day
 		self.end = enddate
 	end
 
