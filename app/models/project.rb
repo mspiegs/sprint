@@ -1,6 +1,7 @@
 class Project < ActiveRecord::Base
 	has_many :stories
 	has_many :sprintblocks
+	has_and_belongs_to_many :users
 
 	after_save :set_sprint
 

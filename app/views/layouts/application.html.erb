@@ -15,10 +15,18 @@
       <span class="icon-bar"></span>
     </button>
     <a class="navbar-brand" style="color: rgba(236, 240, 241,1.0); font-weight: bold;" href="#">Storify</a>
+
+  </div>
+  <div style="height: 20px; padding-top: 17px;">
+  	<% if user_signed_in? %>
+    	<%= current_user.email %><%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+    <% else %>
+    	<%= link_to "Sign In", new_user_session_path %>
+    <% end %>
   </div>
 
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav" style="float: right; margin-right: 200px; margin-top: 9px;">
+    <ul class="nav navbar-nav" style="float: right; margin-right: 200px; margin-top: -10px;">
       <li class="active">
       	<button class="btn btn-primary btn-sm" style="color: rgba(236, 240, 241,1.0); background: #50a118;" data-toggle="modal" data-target="#myModal">
   				New Story
@@ -28,25 +36,29 @@
    </div>
 </nav>
 <body>
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	        <h4 class="modal-title" id="myModalLabel">New Story</h4>
-	      </div>
-	      <div class="modal-body">
-	        <%= render 'stories/form' %>
-					  
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		        <h4 class="modal-title" id="myModalLabel">New Story</h4>
+		      </div>
+		      <div class="modal-body">
+		      	<% if user_signed_in? %>
+		        <%= render 'stories/form' %>
+		        <% else %>
+		        	Please sign in to add stories!
+		        <% end %>
+						  
 
-	     </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					   
-	      </div>
-	    </div><!-- /.modal-content -->
-	  </div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
+		     </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						   
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
 	<div class= "container" style="width: 1250px; margin: auto;">
 		
 

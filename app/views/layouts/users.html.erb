@@ -16,14 +16,8 @@
     </button>
     <a class="navbar-brand" style="color: rgba(236, 240, 241,1.0); font-weight: bold;" href="#">Storify</a>
   </div>
-  <% if user_signed_in? %>
-  <p>
-  	<%= current_user.email %> <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-  </p>
-  <% end %>
 
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
     <ul class="nav navbar-nav" style="float: right; margin-right: 200px; margin-top: 9px;">
       <li class="active">
       	<button class="btn btn-primary btn-sm" style="color: rgba(236, 240, 241,1.0); background: #50a118;" data-toggle="modal" data-target="#myModal">
@@ -42,26 +36,22 @@
 	        <h4 class="modal-title" id="myModalLabel">New Story</h4>
 	      </div>
 	      <div class="modal-body">
-	        <%= render 'stories/form' %>
+	        
 					  
 
 	     </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					   
-	      </div>
-	    </div><!-- /.modal-content -->
-	  </div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
-	<div class= "container" style="width: 1250px; margin: auto;">
-		<ul class="nav">
-			<% current_user.projects.each do |project| %>
-		  <li id="<%= project.id %>" class="myTab"><%= link_to "#{project.name}", project_path(project) %></li>
-		  <% end %>
-		</ul>
+             
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+  <div class= "container" style="width: 1250px; margin: auto;">
+  
 
 <%= yield %>
-	<%= debug(params) if Rails.env.development? %>
-	</div>
+  <%= debug(params) if Rails.env.development? %>
+  </div>
 </body>
 </html>
