@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140307232551) do
+ActiveRecord::Schema.define(version: 20140313042827) do
 
   create_table "comments", force: true do |t|
     t.text     "details"
@@ -29,6 +29,21 @@ ActiveRecord::Schema.define(version: 20140307232551) do
     t.integer  "start_number"
     t.string   "duration_number"
     t.string   "duration_length"
+  end
+
+  create_table "projects_users", force: true do |t|
+    t.integer "user_id"
+    t.integer "project_id"
+  end
+
+  create_table "settings", force: true do |t|
+    t.integer  "duration_number"
+    t.string   "duration_length"
+    t.date     "start_date"
+    t.integer  "start_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "project_id"
   end
 
   create_table "sprintblocks", force: true do |t|
@@ -57,18 +72,19 @@ ActiveRecord::Schema.define(version: 20140307232551) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "admin",                  default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
