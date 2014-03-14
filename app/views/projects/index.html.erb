@@ -1,7 +1,13 @@
 <h1>Listing projects</h1>
 
+<% if user_signed_in? %>
+	<% current_user.projects.each do |project| %>
+		<%= link_to project.name, project_path(project) %>
+	<% end %>
+
+	<%= link_to 'New Project', new_project_path %>
+<% else %>
+	<p>Sign in to view your projects</p>
+<% end %>
 
 
-<%= link_to 'New Project', new_project_path %>
-
-<%= render 'stories/index' %>

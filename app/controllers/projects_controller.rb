@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   layout 'project', only: [:show, :destroy]
+  layout 'home', only: [:index]
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   # GET /projects
