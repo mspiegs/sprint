@@ -1,5 +1,8 @@
 class Story < ActiveRecord::Base
 
+	acts_as_taggable
+	acts_as_taggable_on :tag
+
 	has_many :comments
 	belongs_to :project
 	belongs_to :sprintblock

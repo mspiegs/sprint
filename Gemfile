@@ -5,6 +5,7 @@ gem 'rails', '4.0.1'
 gem 'devise'
 gem 'simple_form'
 gem 'whenever', require: false
+gem 'acts_as_taggable_on'
 
 # Use sqlite3 as the database for Active Record
 group :development do
