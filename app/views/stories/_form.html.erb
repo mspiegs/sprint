@@ -27,6 +27,11 @@
               <%= f.label :estimate %>
               <%= f.select :estimate, options_for_select([['Taster', 'taster'], ['Pint', 'pint'], ['Growler', 'growler'], ['Keg', 'keg']]), {}, {class: 'estimate'} %>
             </div>
+
+            <div class="field">
+              <%= f.label :tag %>
+              <%= f.text_field :tag_list %>
+            </div>
             <%= f.hidden_field :value, class: 'value' %>
             <%= f.hidden_field :project_id, value: params[:id], class: 'projectid' %>
   <div class="actions">
