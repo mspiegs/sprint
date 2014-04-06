@@ -20,6 +20,26 @@ class StoriesController < ApplicationController
   def show
   end
 
+  def tags
+    projectid = params[:id]
+    logger.debug projectid
+    @stories = Story.where(project_id: 8)
+    respond_to do |format|
+      @backlogs = @stories.backlog.tagged_with(params[:search])
+      @commits = @stories.committed.tagged_with(params[:search])
+      @starts = @stories.started.tagged_with(params[:search])
+      @qas = @stories.qa.tagged_with(params[:search])
+      format.html { redirect_to stories_url }
+      format.js { render layout: false}
+      format.json { render json: {:story => @story,
+                                    :backlog_div => render_to_string(partial: "backlog.html.erb"),
+                                    committed_div: render_to_string(partial: "commit.html.erb"),
+                                    qa_div: render_to_string(partial: "qa.html.erb"),
+                                    started_div: render_to_string(partial: "start.html.erb")}, layout: false }
+    end
+  end
+
+
   # GET /stories/new
   def new
     @story = Story.new

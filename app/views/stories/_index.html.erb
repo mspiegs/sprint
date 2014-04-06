@@ -1,4 +1,9 @@
 <h1>Story Board</h1>
+  <%= form_tag({controller: "stories", action: "tags"},  remote: true, method: 'get', id: "tag_search") do %>
+      <p>
+        <%= text_field_tag :search, params[:search_tags], html: { style: 'width: 200px'} %>
+        <%= submit_tag "Search", :name => nil, class: 'btn btn-default' %>
+  <% end %>
 <div>
   <div class="items list-items droppable" id="backlog-items" data-drop-status="backlog">
 

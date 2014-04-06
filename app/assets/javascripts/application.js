@@ -109,7 +109,24 @@ $(document).ready(function(){
 
 	// drag and drop
 	
-	
+	$('tag_search').submit(function(){
+		var url = '/projects/8.json';
+		$.ajax({
+				type: "GET",
+				dataType: "JSON",
+				url: url,
+				// data: { story: { status: dropstatus}},
+				success: function(data){
+						$("#backlog-items").html(data.backlog_div);
+						$("#commit-items").html(data.committed_div);
+						$("#started-items").html(data.started_div);
+						$("#qa-items").html(data.qa_div);
+				},
+				error: function(){
+					alert(XMLHttpRequest.responseText);
+				}
+			});
+	});
 
 	
 });

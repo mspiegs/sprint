@@ -4,6 +4,7 @@ Sprint::Application.routes.draw do
   devise_for :users
 
   resources :projects 
+  get "stories/tags" => 'stories#tags'
 
   resources :sprintblocks
     
