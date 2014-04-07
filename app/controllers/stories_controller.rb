@@ -6,7 +6,6 @@ class StoriesController < ApplicationController
   # GET /stories
   # GET /stories.json
   def index
-
     @story = Story.new
     @stories = Story.all
     @project = Project.where(id: params[:id])
@@ -24,6 +23,9 @@ class StoriesController < ApplicationController
   def tags
     projectid = params[:id]
     logger.debug projectid
+    @searchterms = params[:search]
+    logger.debug "I am searchterms!!!"
+    logger.debug @searchterms
     @stories = Story.where(project_id: 8)
     respond_to do |format|
       @backlogs = @stories.backlog.tagged_with(params[:search])
@@ -32,11 +34,7 @@ class StoriesController < ApplicationController
       @qas = @stories.qa.tagged_with(params[:search])
       format.html { redirect_to stories_url }
       format.js { render layout: false}
-      format.json { render json: {:story => @story,
-                                    :backlog_div => render_to_string(partial: "backlog.html.erb"),
-                                    committed_div: render_to_string(partial: "commit.html.erb"),
-                                    qa_div: render_to_string(partial: "qa.html.erb"),
-                                    started_div: render_to_string(partial: "start.html.erb")}, layout: false }
+      
     end
   end
 

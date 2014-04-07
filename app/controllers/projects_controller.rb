@@ -18,6 +18,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+
     @story = Story.new
     @stories = Story.where(project_id: params[:id])
     @projects = Project.all
