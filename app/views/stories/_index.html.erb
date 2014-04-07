@@ -4,6 +4,7 @@
         <%= text_field_tag :search, params[:search_tags], html: { style: 'width: 200px'} %>
         <%= submit_tag "Search", :name => nil, class: 'btn btn-default' %>
   <% end %>
+  <%= link_to "Clear tags", project_path(@project) %>
 <div>
   <div class="items list-items droppable" id="backlog-items" data-drop-status="backlog">
 
@@ -21,38 +22,7 @@
       <%= render partial: 'stories/qa'%>
   </div>
 </div>
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Audience</th>
-      <th>Want</th>
-      <th>Because</th>
-      <th>Estimate</th>
-      <th>Value</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @stories.each do |story| %>
-      <tr>
-        <td><%= story.title %></td>
-        <td><%= story.audience %></td>
-        <td><%= story.want %></td>
-        <td><%= story.because %></td>
-        <td><%= story.estimate %></td>
-        <td><%= story.value %></td>
-        <td><%= link_to 'Show', story %></td>
-        <td><%= link_to 'Edit', edit_story_path(story) %></td>
-        <td><%= link_to 'Destroy', story, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
 <br>
 
-<%= link_to 'New Story', new_story_path %>

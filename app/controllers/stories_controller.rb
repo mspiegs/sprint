@@ -9,6 +9,7 @@ class StoriesController < ApplicationController
 
     @story = Story.new
     @stories = Story.all
+    @project = Project.where(id: params[:id])
     @backlogs = @stories.backlog.where(project_id: params[:id])
     @commits = @stories.committed.where(project_id: params[:id])
     @starts = @stories.started.where(project_id: params[:id])
