@@ -1,6 +1,7 @@
 class StoriesController < ApplicationController
   layout 'story'
   before_action :set_story, only: [:show, :edit, :update, :destroy]
+  before_action :set_stories, only: [:tags]
   
 
   # GET /stories
@@ -21,12 +22,9 @@ class StoriesController < ApplicationController
   end
 
   def tags
-    projectid = params[:id]
-    logger.debug projectid
     @searchterms = params[:search]
-    logger.debug "I am searchterms!!!"
-    logger.debug @searchterms
-    @stories = Story.where(project_id: 8)
+    @stories = Story.where(project_id: params[:project_id])
+    logger.debug params[:project_id]
     respond_to do |format|
       @backlogs = @stories.backlog.tagged_with(params[:search])
       @commits = @stories.committed.tagged_with(params[:search])
@@ -107,6 +105,10 @@ class StoriesController < ApplicationController
 
     def setting_project
       @project = Project.find(params[:project_id])
+    end
+
+    def set_stories
+      @stories = Story.where(project_id: params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

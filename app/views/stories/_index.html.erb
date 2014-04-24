@@ -2,6 +2,7 @@
   <%= form_tag({controller: "stories", action: "tags"},  remote: true, method: 'get', id: "tag_search") do %>
       <p>
         <%= text_field_tag :search, params[:search_tags], html: { style: 'width: 200px'} %>
+        <%= hidden_field_tag :project_id, params[:id] %>
         <%= submit_tag "Search", :name => nil, class: 'btn btn-default' %>
   <% end %>
   <%= link_to "Clear tags", project_path(@project) %>

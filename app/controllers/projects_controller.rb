@@ -30,6 +30,8 @@ class ProjectsController < ApplicationController
     logger.debug "I am project show"
   end
 
+  
+
   # GET /projects/new
   def new
     @project = Project.new

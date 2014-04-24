@@ -6,6 +6,7 @@ Sprint::Application.routes.draw do
   resources :projects 
   get "stories/tags" => 'stories#tags'
 
+
   resources :sprintblocks
     
   resources :stories do 
