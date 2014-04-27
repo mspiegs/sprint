@@ -68,6 +68,8 @@ class StoriesController < ApplicationController
   # PATCH/PUT /stories/1.json
   def update
     projectid = @story.project_id
+    logger.debug "Project Id"
+    logger.debug projectid
     @stories = Story.where(project_id: projectid)
     logger.debug @story.project_id
     respond_to do |format|

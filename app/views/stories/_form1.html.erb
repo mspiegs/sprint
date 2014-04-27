@@ -1,0 +1,40 @@
+<%= form_for(@story) do |f| %>
+  <% if @story.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@story.errors.count, "error") %> prohibited this story from being saved:</h2>
+
+      <ul>
+      <% @story.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+
+              <p><span>Story Title  </span><%= f.text_field :title, class: 'form-control titlefield', placeholder: 'Title of story' %></p>
+
+              <p><span id="vowelchange">As a </span> <%= f.text_field :audience, class: 'form-control audience' %><span> I want</span> <%= f.text_field :want, class: 'form-control wantfield' %></br></br> <span>so that I</span> <%= f.text_field :because, class: ' form-control becausefield' %></p>
+              
+            </div>
+            <div>
+              <%= f.label :story_status %>
+            <%= f.select :status, options_for_select([['Backlog', 'backlog'], ['Committed', 'committed'],['Started', 'started'],['QA', 'qa'],['Complete','complete'],['Accepted','accepted']]), {}, {class: 'status'} %> 
+          </div>
+
+            <div class="field">
+              <%= f.label :estimate %>
+              <%= f.select :estimate, options_for_select([['Taster', 'taster'], ['Pint', 'pint'], ['Growler', 'growler'], ['Keg', 'keg']]), {}, {class: 'estimate'} %>
+            </div>
+
+            <div class="field">
+              <%= f.label :tag %>
+              <%= f.text_field :tag_list %>
+            </div>
+            <%= f.hidden_field :value, class: 'value' %>
+            
+  <div class="actions">
+    <%= f.submit 'Save', class: "btn btn-primary" %>
+  </div>
+<% end %>
