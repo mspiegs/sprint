@@ -151,7 +151,7 @@ var clickspace = function(){
 				intro = 'As a ';
 			}
 			var item = $('<div></div>');
-			$('<p style=\"font-family: Helvetica;\"><a href=\"/stories/'+response.id+'\">'+intro+'<span>'+response.audience+'</span>'+' I want '+'<span>'+response.want+'</span>'+' so that I '+response.because+'</a></p>').appendTo(item);
+			$('<p style=\"font-family: HelveticaNeue-light;\"><a href=\"/stories/'+response.id+'\">'+intro+'<span>'+response.audience+'</span>'+' I want '+'<span>'+response.want+'</span>'+' so that I '+response.because+'</a></p>').appendTo(item);
 			$('.hoverviewitem').html(item);
 		});
 		$(this).closest('li').find('div').show();
