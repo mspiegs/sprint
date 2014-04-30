@@ -15,5 +15,14 @@ class Project < ActiveRecord::Base
 		end
 	end
 
-	
+	def displaycount
+		d = [self.backlog_display, self.committed_display, self.qa_display, self.started_display, self.completed_display, self.accepted_display]
+		true_count = 0
+		d.each do |d|
+			if d == true
+				true_count += 1
+			end
+		end
+		return true_count
+	end
 end

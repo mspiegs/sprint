@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140316211321) do
+ActiveRecord::Schema.define(version: 20140430041617) do
 
   create_table "comments", force: true do |t|
     t.text     "details"
@@ -29,6 +29,12 @@ ActiveRecord::Schema.define(version: 20140316211321) do
     t.integer  "start_number"
     t.string   "duration_number"
     t.string   "duration_length"
+    t.boolean  "backlog_display"
+    t.boolean  "committed_display"
+    t.boolean  "started_display"
+    t.boolean  "completed_display"
+    t.boolean  "accepted_display"
+    t.boolean  "qa_display"
   end
 
   create_table "projects_users", force: true do |t|

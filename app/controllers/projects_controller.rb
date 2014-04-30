@@ -40,6 +40,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
+    @story = Story.new
   end
 
   # POST /projects
@@ -90,6 +91,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name, :start_number, :sprint_length, :start_date, :duration_number, :duration_length, :user_ids => [] )
+      params.require(:project).permit(:name, :start_number, :sprint_length, :start_date, :duration_number, :duration_length, :backlog_display, :committed_display, :started_display, :qa_display, :user_ids => [])
     end
 end

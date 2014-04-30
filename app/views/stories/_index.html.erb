@@ -7,22 +7,32 @@
   <% end %>
   <%= link_to "Clear tags", project_path(@project) %>
   <div id="searchterms"></div>
+  <a href="/projects/<%= @project.id %>/edit" class="cog_edit"><span class="glyphicon glyphicon-cog cog_edit" style="left: 1185px; font-size: 15px;"></span></a>
 <div>
-  <div class="items list-items droppable" id="backlog-items" data-drop-status="backlog">
+  <% percent = (100 / @project.displaycount) %>
+  <% if @project.backlog_display? %>
+    <div style="width: <%= (percent.to_i - 1) %>%;" class="items list-items droppable" id="backlog-items" data-drop-status="backlog">
 
       <%= render partial: 'stories/backlog' %>
-  </div> <!-- backlog-items  -->
-
-  <div class="items list-items droppable" id="commit-items" data-drop-status="committed">
+    </div> 
+  <% end %><!-- backlog-items  -->
+  <% if @project.committed_display? %>
+    <div style="width: <%= percent.to_i %>%;" class="items list-items droppable" id="commit-items" data-drop-status="committed">
       <%= render partial: 'stories/commit'%>
-  </div>
+    </div>
+  <% end %>
 
-  <div class="items list-items droppable" id="started-items" data-drop-status="started">
+  <% if @project.started_display? %>
+  <div style="width: <%= percent.to_i %>%;" class="items list-items droppable" id="started-items" data-drop-status="started">
       <%= render partial: 'stories/start'%>
   </div>
-  <div class="items list-items droppable" id="qa-items" data-drop-status="qa">
+  <% end %>
+
+  <% if @project.qa_display? %>
+  <div style="width: <%= percent.to_i %>%;" class="items list-items droppable" id="qa-items" data-drop-status="qa">
       <%= render partial: 'stories/qa'%>
   </div>
+  <% end %>
 </div>
 
 
