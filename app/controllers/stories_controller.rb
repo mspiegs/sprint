@@ -23,8 +23,6 @@ class StoriesController < ApplicationController
 
   def tags
     @searchterms = params[:search]
-    @stories = Story.where(project_id: params[:project_id])
-    logger.debug params[:project_id]
     respond_to do |format|
       @backlogs = @stories.backlog.tagged_with(params[:search])
       @commits = @stories.committed.tagged_with(params[:search])
