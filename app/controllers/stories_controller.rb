@@ -23,6 +23,7 @@ class StoriesController < ApplicationController
 
   def tags
     @searchterms = params[:search]
+    logger.debug @stories.each { |x| puts x.project_id}
     respond_to do |format|
       @backlogs = @stories.backlog.tagged_with(params[:search])
       @commits = @stories.committed.tagged_with(params[:search])
@@ -108,7 +109,7 @@ class StoriesController < ApplicationController
     end
 
     def set_stories
-      @stories = Story.where(project_id: params[:id])
+      @stories = Story.where(project_id: params[:project_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -110,7 +110,8 @@ $(document).ready(function(){
 	// drag and drop
 	
 	$('tag_search').submit(function(){
-		var url = '/projects/9.json';
+		var id = $($('tag_search').data('id'));
+		var url = '/projects/'+id+'.json';
 		$.ajax({
 				type: "GET",
 				dataType: "JSON",
