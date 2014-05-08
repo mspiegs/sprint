@@ -28,21 +28,23 @@
     <%= f.text_field :duration_length %>
   </div>
   Display sections?
-  <div class="field">
-    <%= f.label :backlog? %>
-    <%= f.check_box :backlog_display %>
-  </div>
-  <div class="field">
-    <%= f.label :committed? %>
-    <%= f.check_box :committed_display %>
-  </div>
-  <div class="field">
-    <%= f.label :started? %>
-    <%= f.check_box :started_display %>
-  </div>
-  <div class="field">
-    <%= f.label :qa? %>
-    <%= f.check_box :qa_display %>
+  <div class="display_table">
+    <div class="field display_select_field">
+      <%= f.label :backlog, class: "display_field" %>
+      <%= f.check_box :backlog_display, class: "display_box" %>
+    </div>
+    <div class="field display_select_field">
+      <%= f.label :committed, class: "display_field" %>
+      <%= f.check_box :committed_display, class: "display_box" %>
+    </div>
+    <div class="field display_select_field">
+      <%= f.label :started, class: "display_field" %>
+      <%= f.check_box :started_display, class: "display_box" %>
+    </div>
+    <div class="field display_select_field">
+      <%= f.label :qa, class: "display_field" %>
+      <%= f.check_box :qa_display, class: "display_box" %>
+    </div>
   </div>
   <div class="actions">
     <%= f.submit %>

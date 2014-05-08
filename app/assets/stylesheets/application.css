@@ -369,6 +369,33 @@ span a:hover {
 	color: black;
 }
 
+/*Column display selection in edit project*/
+
+.display_table {
+	border: 2px solid rgba(202, 202, 202, .5);
+	width: 200px;
+}
+
+.display_field {
+	font-family: HelveticaNeue-light;
+	font-weight: normal;
+	width: 174px;
+	padding-left: 5px;
+
+}
+
+.display_select_field {
+		margin-bottom: 0px !important;
+}
+.display_select_field:hover {
+	background: gainsboro;
+}
+
+.display_box {
+
+	margin-right: 5px;
+}
+
 /*.cog-interior {
 	width: 55px;
 	height: 90;
