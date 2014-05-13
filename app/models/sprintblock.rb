@@ -30,6 +30,7 @@ class Sprintblock < ActiveRecord::Base
 		@projects = Project.all
 		@projects.each do |project|
 			sprint1 = Sprintblock.current_sprint.where(project_id: project.id).first
+			logger.debug sprint1
 			sprint1.next_sprint
 		end
 	end
